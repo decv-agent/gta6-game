@@ -1,61 +1,49 @@
-// Every tuning number and colour in one place. The playfield is a fixed 1280x720 logical area;
-// the renderer scales it to the window, so no rule below depends on the screen size.
-
-export const FIELD = { width: 1280, height: 720, groundY: 664 };
-
-/** The simulation's fixed step, in seconds: 60 updates a second whatever the display's rate. */
-export const STEP = 1 / 60;
-
-export const PLAYER = {
-  width: 72,
-  height: 24,
-  speed: 560,
-  invulnerable: 1.5,
+// Palmera Heat — tuning constants and the sun-soaked palette.
+// Numbers designers might tweak live here so behaviour code stays clean.
+export const WORLD = {
+  size: 3000,
+  beachX: 2620,
+  seaX: 2820,
+  block: 300,
+  road: 92,
 };
-
-export const LIVES = 3;
-
-export const BLOCK = {
-  minWidth: 40,
-  maxWidth: 110,
-  height: 36,
-  speed: 240,
-  speedPerLevel: 30,
-  speedJitter: 90,
-  interval: 0.55,
-  intervalScale: 0.88,
-  minInterval: 0.14,
-  dodgePoints: 1,
-};
-
-export const COIN = {
-  size: 24,
-  speed: 190,
-  speedPerLevel: 14,
-  interval: 1.4,
-  intervalJitter: 0.8,
-  points: 10,
-};
-
-/** Seconds of play per level, and the last level: speeds and spawn rates stop growing there. */
-export const LEVEL = { seconds: 12, max: 12 };
-
-/** How many falling things can exist at once; the pool is allocated once, at boot. */
-export const POOL_SIZE = 64;
 
 export const PALETTE = {
-  backdrop: '#11141b',
-  sky: '#1b1f2a',
-  ground: '#2a3040',
-  player: '#4fc3f7',
-  block: '#e5534b',
-  coin: '#f2c94c',
-  panel: '#252b38',
-  text: '#eef1f5',
-  muted: '#8b93a3',
+  road: '#3d3a44',
+  roadEdge: '#2c2a33',
+  lane: '#f4e3b2',
+  sidewalk: '#c9b8a3',
+  sand: '#f2d492',
+  sea: '#1f8a9e',
+  seaDeep: '#146b80',
+  foam: '#eafaf1',
+  grass: '#5da85f',
+  grassDark: '#47884e',
+  palmTrunk: '#8a5a3b',
+  palmLeaf: '#2f9e5f',
+  shadow: 'rgba(70,30,60,0.28)',
+  hero: '#ff5d3b',
+  cop: '#2b4bd8',
+  copLight: '#7ec8ff',
 };
 
-export const FONT = 'system-ui, -apple-system, "Segoe UI", sans-serif';
+export const BUILDING_COLORS = [
+  '#e8875b', '#e2a03f', '#d96c4f', '#5fb4ad', '#3e8e9e', '#f2c078',
+  '#c96f4a', '#7fc8bc', '#e5989b', '#ffb26b', '#4ea8a0', '#d1495b',
+];
 
-/** Where the best score is kept between visits (this browser only). */
-export const BEST_KEY = 'block-dodger.best';
+export const CAR_COLORS = [
+  '#e63946', '#f4a261', '#2a9d8f', '#e9c46a', '#6a4c93',
+  '#1982c4', '#8ac926', '#ffca3a', '#f15bb5', '#d8d8d8',
+];
+
+export const PLAYER = { radius: 11, walkSpeed: 165, sprintSpeed: 265, maxHealth: 100 };
+
+export const CAR = {
+  length: 44, width: 22, accel: 300, brake: 460, reverse: 140,
+  drag: 0.6, maxSpeed: 440, maxReverse: 140,
+};
+
+export const WANTED = { decayDelay: 7, decayEvery: 6, bustTime: 2.4 };
+
+export const STORAGE_KEY = 'palmera-heat-save-v1';
