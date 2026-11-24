@@ -1,15 +1,61 @@
-// PALMERA HEAT — tuning, palette and world constants in one place.
-// An original sun-soaked crime game set in the fictional Palmera City.
-export const WORLD = { size: 3000, roadEvery: 500, roadWidth: 110 };
+// Every tuning number and colour in one place. The playfield is a fixed 1280x720 logical area;
+// the renderer scales it to the window, so no rule below depends on the screen size.
+
+export const FIELD = { width: 1280, height: 720, groundY: 664 };
+
+/** The simulation's fixed step, in seconds: 60 updates a second whatever the display's rate. */
 export const STEP = 1 / 60;
-export const SAVE_KEY = 'palmera-heat.save.v1';
-export const PALETTE = {
-  water: '#1b8a9c', waterDeep: '#12707f', sand: '#f2d492', grass: '#5da860',
-  park: '#4c9950', road: '#3d3a42', roadLine: '#ffd98a', sidewalk: '#dcc9a6', curb: '#b8a888',
-  buildings: ['#e2703a', '#2a9d8f', '#e9c46a', '#f4a261', '#457b9d', '#e76f51', '#2ec4b6', '#ffb703', '#ef8354', '#3aafa9'],
-  roofs: ['#c4532a', '#1f7a6d', '#c9a227', '#d98243', '#33586e', '#c4532f', '#22a193', '#d99a06', '#cf6a3e', '#2b7a78'],
+
+export const PLAYER = {
+  width: 72,
+  height: 24,
+  speed: 560,
+  invulnerable: 1.5,
 };
-export const PLAYER = { radius: 13, walk: 170, sprint: 275, health: 100 };
-export const CAR = { accel: 300, brake: 480, maxSpeed: 460, maxReverse: 140, turn: 2.5 };
-export const WANTED_DECAY = 24;
+
+export const LIVES = 3;
+
+export const BLOCK = {
+  minWidth: 40,
+  maxWidth: 110,
+  height: 36,
+  speed: 240,
+  speedPerLevel: 30,
+  speedJitter: 90,
+  interval: 0.55,
+  intervalScale: 0.88,
+  minInterval: 0.14,
+  dodgePoints: 1,
+};
+
+export const COIN = {
+  size: 24,
+  speed: 190,
+  speedPerLevel: 14,
+  interval: 1.4,
+  intervalJitter: 0.8,
+  points: 10,
+};
+
+/** Seconds of play per level, and the last level: speeds and spawn rates stop growing there. */
+export const LEVEL = { seconds: 12, max: 12 };
+
+/** How many falling things can exist at once; the pool is allocated once, at boot. */
+export const POOL_SIZE = 64;
+
+export const PALETTE = {
+  backdrop: '#11141b',
+  sky: '#1b1f2a',
+  ground: '#2a3040',
+  player: '#4fc3f7',
+  block: '#e5534b',
+  coin: '#f2c94c',
+  panel: '#252b38',
+  text: '#eef1f5',
+  muted: '#8b93a3',
+};
+
 export const FONT = 'system-ui, -apple-system, "Segoe UI", sans-serif';
+
+/** Where the best score is kept between visits (this browser only). */
+export const BEST_KEY = 'block-dodger.best';
